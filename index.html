@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Rohith Shabad — AI Engineer & Builder</title>
+  <meta name="description" content="Serial AI Builder. 60+ projects across finance, automation, data, and consumer AI. Sr. Software Engineer @ Lowe's."/>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #0a0a0f;
+      --card: #13131a;
+      --border: #1e1e2e;
+      --accent: #7c3aed;
+      --accent2: #06b6d4;
+      --text: #e2e8f0;
+      --muted: #64748b;
+      --green: #10b981;
+    }
+    body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; line-height: 1.6; }
+
+    /* HERO */
+    .hero {
+      max-width: 900px; margin: 0 auto; padding: 80px 24px 48px;
+      text-align: center;
+    }
+    .avatar {
+      width: 80px; height: 80px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2rem; margin: 0 auto 24px; font-weight: bold;
+    }
+    .hero h1 { font-size: 2.8rem; font-weight: 800; letter-spacing: -1px; }
+    .hero h1 span { background: linear-gradient(90deg, var(--accent), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .tagline { color: var(--muted); font-size: 1.15rem; margin: 12px 0 32px; max-width: 600px; margin-left: auto; margin-right: auto; }
+    .badges { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 36px; }
+    .badge { background: var(--card); border: 1px solid var(--border); padding: 6px 14px; border-radius: 999px; font-size: 0.85rem; color: var(--text); }
+    .links { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .btn { padding: 10px 24px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 0.95rem; transition: opacity 0.2s; }
+    .btn-primary { background: var(--accent); color: white; }
+    .btn-secondary { background: var(--card); border: 1px solid var(--border); color: var(--text); }
+    .btn:hover { opacity: 0.85; }
+
+    /* STATS */
+    .stats { display: flex; gap: 0; justify-content: center; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); margin: 0 auto; max-width: 700px; }
+    .stat { flex: 1; text-align: center; padding: 28px 16px; }
+    .stat + .stat { border-left: 1px solid var(--border); }
+    .stat-num { font-size: 2rem; font-weight: 800; color: var(--accent2); }
+    .stat-label { font-size: 0.8rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 4px; }
+
+    /* PROJECTS */
+    .section { max-width: 1000px; margin: 0 auto; padding: 60px 24px; }
+    .section-title { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); font-weight: 700; margin-bottom: 8px; }
+    .section-heading { font-size: 1.8rem; font-weight: 800; margin-bottom: 40px; }
+    .domain-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); font-weight: 600; margin: 36px 0 16px; display: flex; align-items: center; gap: 8px; }
+    .domain-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+    .card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+      padding: 20px; transition: border-color 0.2s, transform 0.2s;
+    }
+    .card:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .card-name { font-weight: 700; font-size: 1rem; margin-bottom: 6px; }
+    .card-desc { color: var(--muted); font-size: 0.875rem; line-height: 1.5; margin-bottom: 14px; }
+    .card-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .tag { font-size: 0.72rem; padding: 2px 8px; border-radius: 999px; background: rgba(124,58,237,0.15); color: var(--accent2); border: 1px solid rgba(124,58,237,0.2); }
+    .card-link { display: inline-flex; align-items: center; gap: 6px; color: var(--accent2); font-size: 0.8rem; text-decoration: none; margin-top: 12px; font-weight: 600; }
+    .card-link:hover { text-decoration: underline; }
+    .live-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); display: inline-block; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+
+    /* FOOTER */
+    footer { text-align: center; padding: 48px 24px; color: var(--muted); font-size: 0.875rem; border-top: 1px solid var(--border); }
+    footer a { color: var(--accent2); text-decoration: none; }
+
+    @media(max-width:600px){
+      .hero h1{font-size:1.9rem;}
+      .stats{flex-wrap:wrap;}
+      .stat+.stat{border-left:none;border-top:1px solid var(--border);}
+    }
+  </style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="avatar">R</div>
+  <h1>Rohith <span>Shabad</span></h1>
+  <p class="tagline">Serial AI Builder. Sr. Software Engineer @ Lowe's. Building tools that serve real people across finance, automation, data and consumer AI.</p>
+  <div class="badges">
+    <span class="badge">🐍 Python</span>
+    <span class="badge">🤖 LLMs</span>
+    <span class="badge">⚡ Node.js</span>
+    <span class="badge">📊 Data Engineering</span>
+    <span class="badge">🔧 AI Automation</span>
+    <span class="badge">💰 Fintech</span>
+  </div>
+  <div class="links">
+    <a href="https://github.com/rohith547" class="btn btn-primary">GitHub</a>
+    <a href="https://www.linkedin.com/in/rohith-s-0b257a186" class="btn btn-secondary">LinkedIn</a>
+    <a href="https://rohith547.github.io/govdata-ai/" class="btn btn-secondary">Featured Project ↗</a>
+  </div>
+</div>
+
+<div class="stats">
+  <div class="stat"><div class="stat-num">60+</div><div class="stat-label">Projects Built</div></div>
+  <div class="stat"><div class="stat-num">7</div><div class="stat-label">Domains</div></div>
+  <div class="stat"><div class="stat-num">56K+</div><div class="stat-label">Records Searched</div></div>
+  <div class="stat"><div class="stat-num">∞</div><div class="stat-label">Still Building</div></div>
+</div>
+
+<div class="section">
+  <div class="section-title">Work</div>
+  <div class="section-heading">Projects Built</div>
+
+  <!-- FEATURED -->
+  <div class="domain-label">⭐ Featured</div>
+  <div class="grid">
+    <div class="card">
+      <div class="card-name"><span class="live-dot"></span> govdata-ai</div>
+      <div class="card-desc">Open source AI layer for US government databases. Search 56,864+ unclaimed money records across 5 states using fuzzy name matching.</div>
+      <div class="card-tags"><span class="tag">Python</span><span class="tag">Socrata API</span><span class="tag">Gov Data</span><span class="tag">Open Source</span></div>
+      <a href="https://rohith547.github.io/govdata-ai/" class="card-link">Live Demo ↗</a>
+    </div>
+    <div class="card">
+      <div class="card-name">personal-agent</div>
+      <div class="card-desc">Production-grade personal AI agent that makes calls, manages calendar, and handles everything via Telegram.</div>
+      <div class="card-tags"><span class="tag">LLMs</span><span class="tag">Telegram</span><span class="tag">Automation</span></div>
+      <a href="https://github.com/rohith547" class="card-link">GitHub ↗</a>
+    </div>
+    <div class="card">
+      <div class="card-name">polymarket-bot</div>
+      <div class="card-desc">Scans 30,000+ live Polymarket prediction markets for trading inefficiencies. Sends Telegram alerts when opportunities found.</div>
+      <div class="card-tags"><span class="tag">Python</span><span class="tag">Trading</span><span class="tag">Telegram</span></div>
+      <a href="https://github.com/rohith547" class="card-link">GitHub ↗</a>
+    </div>
+  </div>
+
+  <!-- FINANCE -->
+  <div class="domain-label">💰 Finance & Trading</div>
+  <div class="grid">
+    <div class="card"><div class="card-name">tradingpilot</div><div class="card-desc">Configurable market volatility alert bot for put sellers on SPX/NDX/any ticker.</div><div class="card-tags"><span class="tag">Python</span><span class="tag">Trading</span><span class="tag">Options</span></div></div>
+    <div class="card"><div class="card-name">signal-scanner</div><div class="card-desc">Live market signal scanner with real-time alerts.</div><div class="card-tags"><span class="tag">Python</span><span class="tag">Finance</span><span class="tag">Vercel</span></div><a href="https://pricedin-scanner.vercel.app" class="card-link">Live ↗</a></div>
+    <div class="card"><div class="card-name">btc-sniper</div><div class="card-desc">Bitcoin trading signal bot with entry/exit automation.</div><div class="card-tags"><span class="tag">Python</span><span class="tag">Crypto</span><span class="tag">Bot</span></div></div>
+    <div class="card"><div class="card-name">flash-arb</div><div class="card-desc">Flash arbitrage opportunity scanner across markets.</div><div class="card-tags"><span class="tag">Python</span><span class="tag">Arb</span><span class="tag">Trading</span></div></div>
+    <div class="card"><div class="card-name">short-squeeze</div><div class="card-desc">Short squeeze detector scanning for setup conditions.</div><div class="card-tags"><span class="tag">Python</span><span class="tag">Stocks</span></div></div>
+    <div class="card"><div class="card-name">smart-money-13f</div><div class="card-desc">Tracks institutional 13F filings to follow smart money moves.</div><div class="card-tags"><span class="tag">Python</span><span class="tag">SEC Data</span></div></div>
+    <div class="card"><div class="card-name">insider-tracker</div><div class="card-desc">Tracks insider buying/selling activity for trading signals.</div><div class="card-tags"><span class="tag">Python</span><span class="tag">SEC</span><span class="tag">React</span></div></div>
+    <div class="card"><div class="card-name">earnings-pulse</div><div class="card-desc">Earnings season intelligence dashboard and alerts.</div><div class="card-tags"><span class="tag">React</span><span class="tag">Finance</span></div></div>
+    <div class="card"><div class="card-name">macro-pulse</div><div class="card-desc">Macro economic indicator tracker and dashboard.</div><div class="card-tags"><span class="tag">React</span><span class="tag">FRED API</span></div></div>
+    <div class="card"><div class="card-name">fed-watch</div><div class="card-desc">Fed meeting tracker and interest rate decision monitor.</div><div class="card-tags"><span class="tag">React</span><span class="tag">Fed Data</span></div></div>
+    <div class="card"><div class="card-name">follow-the-money</div><div class="card-desc">Follow institutional and political money flows.</div><div class="card-tags"><span class="tag">React</span><span class="tag">Data</span></div></div>
+    <div class="card"><div class="card-name">pricedin-newsletter</div><div class="card-desc">Automated daily finance newsletter pipeline for the Priced In brand.</div><div class="card-tags"><span class="tag">Python</span><span class="tag">Automation</span><span class="tag">Email</span></div></div>
+  </div>
+
+  <!-- AUTOMATION -->
+  <div class="domain-label">🤖 AI Automation</div>
+  <div class="grid">
+    <div class="card"><div class="card-name">commandcore</div><div class="card-desc">Private Telegram-first AI control center. Run automation workflows, monitor jobs, check system health from iPhone.</div><div class="card-tags"><span class="tag">Python</span><span class="tag">Telegram</span><span class="tag">LLMs</span></div></div>
+    <div class="card"><div class="card-name">linkedinpilot</div><div class="card-desc">Auto LinkedIn post system — daily AI drafts with Telegram approval workflow.</div><div class="card-tags"><span class="tag">Python</span><span class="tag">LLMs</span><span class="tag">Automation</span></div></div>
+    <div class="card"><div class="card-name">x-pilot</div><div class="card-desc">Auto X.com post system — AI research, Groq drafts, Playwright images, Telegram approval, X API auto-post.</div><div class="card-tags"><span class="tag">Python</span><span class="tag">Playwright</span><span class="tag">X API</span></div></div>
+    <div class="card"><div class="card-name">beacon</div><div class="card-desc">Autonomous daily AI news video brand — fully automated content pipeline.</div><div class="card-tags"><span class="tag">Python</span><span class="tag">Video</span><span class="tag">LLMs</span></div></div>
+    <div class="card"><div class="card-name">raspberry-pi-automation</div><div class="card-desc">Home automation and monitoring with Raspberry Pi.</div><div class="card-tags"><span class="tag">Python</span><span class="tag">IoT</span><span class="tag">Raspberry Pi</span></div></div>
+  </div>
+
+  <!-- CONSUMER AI -->
+  <div class="domain-label">🎯 Consumer AI Tools</div>
+  <div class="grid">
+    <div class="card"><div class="card-name">car-deal-researcher</div><div class="card-desc">Interactive Telegram bot for finding best car deals across multiple sources.</div><div class="card-tags"><span class="tag">Python</span><span class="tag">LLMs</span><span class="tag">Telegram</span></div></div>
+    <div class="card"><div class="card-name">interviewedge</div><div class="card-desc">AI-powered interview prep and coaching tool.</div><div class="card-tags"><span class="tag">React</span><span class="tag">LLMs</span></div></div>
+    <div class="card"><div class="card-name">debatecoach</div><div class="card-desc">AI debate coach that helps you argue any position.</div><div class="card-tags"><span class="tag">React</span><span class="tag">LLMs</span></div></div>
+    <div class="card"><div class="card-name">habitpilot</div><div class="card-desc">Minimalist Telegram habit tracking bot. Log daily health routines with minimal effort.</div><div class="card-tags"><span class="tag">Python</span><span class="tag">Telegram</span></div></div>
+    <div class="card"><div class="card-name">junkpilot</div><div class="card-desc">Junk food clean score tracker Telegram bot.</div><div class="card-tags"><span class="tag">Python</span><span class="tag">Health</span><span class="tag">Telegram</span></div></div>
+    <div class="card"><div class="card-name">eventpulse</div><div class="card-desc">AI-powered event and vacation deal intelligence via Telegram.</div><div class="card-tags"><span class="tag">Python</span><span class="tag">LLMs</span><span class="tag">Telegram</span></div></div>
+    <div class="card"><div class="card-name">explainit</div><div class="card-desc">AI that explains any topic simply — like explaining to a 5 year old.</div><div class="card-tags"><span class="tag">React</span><span class="tag">LLMs</span></div></div>
+    <div class="card"><div class="card-name">codementor</div><div class="card-desc">AI coding mentor and code review assistant.</div><div class="card-tags"><span class="tag">React</span><span class="tag">LLMs</span></div></div>
+  </div>
+
+  <!-- PERSONAL FINANCE -->
+  <div class="domain-label">🏠 Personal Finance</div>
+  <div class="grid">
+    <div class="card"><div class="card-name">bills-tracker-v2</div><div class="card-desc">Production-grade AI Bill Tracker Telegram bot.</div><div class="card-tags"><span class="tag">Python</span><span class="tag">Telegram</span><span class="tag">Finance</span></div></div>
+    <div class="card"><div class="card-name">refi-radar</div><div class="card-desc">Mortgage refinance opportunity radar and alert system.</div><div class="card-tags"><span class="tag">Python</span><span class="tag">Finance</span></div></div>
+    <div class="card"><div class="card-name">rent-tracker</div><div class="card-desc">Rent tracking and market comparison tool.</div><div class="card-tags"><span class="tag">Python</span><span class="tag">Real Estate</span></div></div>
+    <div class="card"><div class="card-name">splitsmart</div><div class="card-desc">Smart bill splitting app for groups.</div><div class="card-tags"><span class="tag">React</span><span class="tag">Finance</span></div></div>
+    <div class="card"><div class="card-name">subsave</div><div class="card-desc">Subscription tracker and savings optimizer.</div><div class="card-tags"><span class="tag">React</span><span class="tag">Finance</span></div></div>
+    <div class="card"><div class="card-name">retireright</div><div class="card-desc">Retirement planning calculator and advisor.</div><div class="card-tags"><span class="tag">React</span><span class="tag">Finance</span></div></div>
+    <div class="card"><div class="card-name">insureiq</div><div class="card-desc">AI-powered insurance comparison and optimization.</div><div class="card-tags"><span class="tag">React</span><span class="tag">LLMs</span></div></div>
+    <div class="card"><div class="card-name">benefitsunlocked</div><div class="card-desc">Employee benefits analyzer and optimizer.</div><div class="card-tags"><span class="tag">React</span><span class="tag">LLMs</span></div></div>
+  </div>
+
+  <!-- DATA & KNOWLEDGE -->
+  <div class="domain-label">📊 Data & Knowledge</div>
+  <div class="grid">
+    <div class="card"><div class="card-name">knowledge-vault</div><div class="card-desc">AI-powered content intelligence platform — ingest, categorize, extract knowledge from YouTube and more.</div><div class="card-tags"><span class="tag">Python</span><span class="tag">LLMs</span><span class="tag">YouTube API</span></div></div>
+    <div class="card"><div class="card-name">news-sniper</div><div class="card-desc">Snipes breaking news and sends alerts before market moves.</div><div class="card-tags"><span class="tag">Python</span><span class="tag">News API</span></div></div>
+    <div class="card"><div class="card-name">app-pulse</div><div class="card-desc">App store analytics and trend detector.</div><div class="card-tags"><span class="tag">React</span><span class="tag">Data</span></div></div>
+    <div class="card"><div class="card-name">historyunlocked</div><div class="card-desc">AI that makes history engaging and interactive.</div><div class="card-tags"><span class="tag">React</span><span class="tag">LLMs</span></div></div>
+    <div class="card"><div class="card-name">sciencesimple</div><div class="card-desc">AI that simplifies complex science concepts.</div><div class="card-tags"><span class="tag">React</span><span class="tag">LLMs</span></div></div>
+    <div class="card"><div class="card-name">identity-vault</div><div class="card-desc">Local-first personal identity vault for documents and structured profile data.</div><div class="card-tags"><span class="tag">Python</span><span class="tag">Local-first</span><span class="tag">Privacy</span></div></div>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="domain-label">📹 Content & Media</div>
+  <div class="grid">
+    <div class="card"><div class="card-name">bobo-studio</div><div class="card-desc">Automated end-to-end content production pipeline for Bobo's Little World — toddler YouTube series for ages 1-5.</div><div class="card-tags"><span class="tag">Python</span><span class="tag">AI Video</span><span class="tag">Automation</span></div></div>
+    <div class="card"><div class="card-name">pricedin-shorts</div><div class="card-desc">Auto-generated finance short-form video content pipeline.</div><div class="card-tags"><span class="tag">Python</span><span class="tag">Video</span><span class="tag">Finance</span></div></div>
+    <div class="card"><div class="card-name">echolegacy</div><div class="card-desc">Legacy and memory preservation platform using AI.</div><div class="card-tags"><span class="tag">React</span><span class="tag">LLMs</span></div></div>
+    <div class="card"><div class="card-name">griefguide</div><div class="card-desc">AI grief support and guidance companion.</div><div class="card-tags"><span class="tag">React</span><span class="tag">LLMs</span></div></div>
+    <div class="card"><div class="card-name">lifeshield</div><div class="card-desc">Personal safety and emergency response AI assistant.</div><div class="card-tags"><span class="tag">React</span><span class="tag">LLMs</span></div></div>
+  </div>
+</div>
+
+<footer>
+  <p>Built by Rohith Shabad · <a href="https://github.com/rohith547">github.com/rohith547</a> · <a href="https://www.linkedin.com/in/rohith-s-0b257a186">LinkedIn</a></p>
+  <p style="margin-top:8px;font-size:0.8rem;">Always building. Always shipping.</p>
+</footer>
+
+</body>
+</html>
