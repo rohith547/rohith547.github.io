@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>50 AI Technical Implementations | Rohith Shabad</title>
+  <meta name="description" content="A free 161-page reference book documenting 50 production AI engineering patterns — streaming APIs, multi-agent systems, Playwright automation, DeFi, RAG pipelines, and more." />
+  <meta property="og:title" content="50 AI Technical Implementations" />
+  <meta property="og:description" content="Free 161-page book: 50 production AI patterns from real projects. Streaming, WebSockets, Playwright, RAG, DeFi, encryption, and more." />
+  <meta property="og:type" content="website" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #0d1117;
+      color: #e6edf3;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      min-height: 100vh;
+    }
+
+    header {
+      background: #161b22;
+      border-bottom: 1px solid #30363d;
+      padding: 20px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .header-left h1 {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: #58a6ff;
+    }
+
+    .header-left p {
+      font-size: 0.8rem;
+      color: #8b949e;
+      margin-top: 2px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 18px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: opacity 0.15s;
+    }
+    .btn:hover { opacity: 0.85; }
+    .btn-primary { background: #238636; color: #fff; }
+    .btn-secondary { background: #21262d; color: #e6edf3; border: 1px solid #30363d; }
+
+    .hero {
+      text-align: center;
+      padding: 48px 24px 32px;
+      border-bottom: 1px solid #21262d;
+    }
+
+    .hero h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #58a6ff, #3fb950);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 12px;
+    }
+
+    .hero p {
+      font-size: 1rem;
+      color: #8b949e;
+      max-width: 580px;
+      margin: 0 auto 24px;
+      line-height: 1.6;
+    }
+
+    .badges {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+
+    .badge {
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 500;
+    }
+
+    .badge-blue   { background: #1f3d5c; color: #58a6ff; border: 1px solid #1f6feb; }
+    .badge-green  { background: #1b3a2a; color: #3fb950; border: 1px solid #238636; }
+    .badge-orange { background: #3d2a1e; color: #f78166; border: 1px solid #da3633; }
+    .badge-purple { background: #2d2060; color: #d2a8ff; border: 1px solid #6e40c9; }
+
+    .viewer-wrap {
+      max-width: 960px;
+      margin: 32px auto;
+      padding: 0 20px 60px;
+    }
+
+    .viewer-card {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .viewer-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 20px;
+      background: #21262d;
+      border-bottom: 1px solid #30363d;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .viewer-toolbar span { font-size: 0.82rem; color: #8b949e; }
+
+    .page-controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .page-controls button {
+      background: #30363d;
+      border: 1px solid #484f58;
+      color: #e6edf3;
+      padding: 5px 14px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 0.82rem;
+      transition: background 0.15s;
+    }
+    .page-controls button:hover { background: #3d444d; }
+    .page-controls button:disabled { opacity: 0.35; cursor: not-allowed; }
+
+    #page-info { font-size: 0.82rem; color: #8b949e; min-width: 80px; text-align: center; }
+
+    #pdf-canvas {
+      display: block;
+      width: 100%;
+      height: auto;
+      background: #fff;
+    }
+
+    .loading {
+      text-align: center;
+      padding: 80px 20px;
+      color: #8b949e;
+    }
+
+    .loading .spinner {
+      width: 36px; height: 36px;
+      border: 3px solid #30363d;
+      border-top-color: #58a6ff;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin: 0 auto 16px;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .chapters {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 20px 60px;
+    }
+
+    .chapters h3 {
+      font-size: 1.1rem;
+      color: #58a6ff;
+      margin-bottom: 20px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #21262d;
+    }
+
+    .parts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 14px;
+    }
+
+    .part-card {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      padding: 16px;
+    }
+
+    .part-card h4 {
+      font-size: 0.82rem;
+      color: #58a6ff;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 10px;
+    }
+
+    .part-card ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .part-card li {
+      font-size: 0.8rem;
+      color: #8b949e;
+      padding-left: 12px;
+      position: relative;
+    }
+
+    .part-card li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: #3fb950;
+    }
+
+    footer {
+      text-align: center;
+      padding: 24px;
+      border-top: 1px solid #21262d;
+      font-size: 0.78rem;
+      color: #484f58;
+    }
+
+    footer a { color: #58a6ff; text-decoration: none; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-left">
+    <h1>50 AI Technical Implementations</h1>
+    <p>by Rohith Shabad · Free · 161 pages</p>
+  </div>
+  <div style="display:flex;gap:8px;flex-wrap:wrap;">
+    <a class="btn btn-primary" href="50-ai-implementations.pdf" download>⬇ Download PDF</a>
+    <a class="btn btn-secondary" href="https://github.com/rohith547" target="_blank">GitHub</a>
+  </div>
+</header>
+
+<section class="hero">
+  <h2>50 AI Technical Implementations</h2>
+  <p>
+    Most AI tutorials stop at the demo. This book starts where they end —
+    the production patterns that make AI systems actually ship.
+    Extracted from 70+ real projects, documented at engineering depth.
+  </p>
+  <div class="badges">
+    <span class="badge badge-blue">Streaming APIs</span>
+    <span class="badge badge-green">Multi-Agent Systems</span>
+    <span class="badge badge-orange">Playwright Automation</span>
+    <span class="badge badge-purple">DeFi &amp; Blockchain</span>
+    <span class="badge badge-blue">RAG Pipelines</span>
+    <span class="badge badge-green">WebSockets</span>
+    <span class="badge badge-orange">Field-Level Encryption</span>
+    <span class="badge badge-purple">Media Pipelines</span>
+  </div>
+  <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+    <a class="btn btn-primary" href="50-ai-implementations.pdf" download>⬇ Download Free PDF</a>
+    <a class="btn btn-secondary" href="50-ai-implementations.pdf" target="_blank">Read in Browser</a>
+  </div>
+</section>
+
+<div class="viewer-wrap">
+  <div class="viewer-card">
+    <div class="viewer-toolbar">
+      <span>Interactive Preview</span>
+      <div class="page-controls">
+        <button id="prev-btn" disabled>← Prev</button>
+        <span id="page-info">Loading…</span>
+        <button id="next-btn" disabled>Next →</button>
+      </div>
+      <a class="btn btn-secondary" href="50-ai-implementations.pdf" target="_blank" style="font-size:0.78rem;padding:4px 12px;">Open Full PDF</a>
+    </div>
+    <div id="loading" class="loading">
+      <div class="spinner"></div>
+      <p>Loading book…</p>
+    </div>
+    <canvas id="pdf-canvas" style="display:none;"></canvas>
+  </div>
+</div>
+
+<div class="chapters">
+  <h3>What's Inside — 11 Parts, 50 Chapters</h3>
+  <div class="parts-grid">
+    <div class="part-card">
+      <h4>Part I — LLM Streaming &amp; Agent APIs</h4>
+      <ul>
+        <li>Streaming Claude API with ReadableStream</li>
+        <li>Multi-Provider AI Factory</li>
+        <li>Zod-Validated AI Orchestrator</li>
+        <li>Real-Time LLM Streaming Hook</li>
+      </ul>
+    </div>
+    <div class="part-card">
+      <h4>Part II — Multi-Agent Orchestration</h4>
+      <ul>
+        <li>Personal Multi-Agent System</li>
+        <li>Context-Tiered Access Control</li>
+        <li>Call Memory Learning System</li>
+        <li>Fraud Detection in Voice Calls</li>
+        <li>CommandCore 20-Service Hub</li>
+        <li>BullMQ Job Queue System</li>
+      </ul>
+    </div>
+    <div class="part-card">
+      <h4>Part III — Playwright &amp; Browser Automation</h4>
+      <ul>
+        <li>AgentBrowser Async Wrapper</li>
+        <li>Autotrader Scraper</li>
+        <li>Bank Portal + Session Persistence</li>
+        <li>Playwright Scheduling Agent</li>
+      </ul>
+    </div>
+    <div class="part-card">
+      <h4>Part IV — Real-Time &amp; WebSockets</h4>
+      <ul>
+        <li>Binance WebSocket Price Feed</li>
+        <li>Multi-Signal Ensemble Trading</li>
+        <li>FastAPI WebSocket Server</li>
+        <li>SSE Streaming in Next.js</li>
+      </ul>
+    </div>
+    <div class="part-card">
+      <h4>Part V — Financial Data Systems</h4>
+      <ul>
+        <li>FRED API Macro Indicators</li>
+        <li>Weighted Market Score Engine</li>
+        <li>Kelly Criterion + EV Engine</li>
+        <li>News Sentiment LLM Classifier</li>
+        <li>Plaid Banking Integration</li>
+        <li>Affordability Assessment Engine</li>
+        <li>Bill Anomaly Detection</li>
+      </ul>
+    </div>
+    <div class="part-card">
+      <h4>Part VI — DeFi &amp; Blockchain</h4>
+      <ul>
+        <li>EIP712 Order Signing</li>
+        <li>Web3 Wallet on Polygon</li>
+        <li>Flash Loan Arbitrage Detection</li>
+      </ul>
+    </div>
+    <div class="part-card">
+      <h4>Part VII — Content &amp; Media Pipelines</h4>
+      <ul>
+        <li>ElevenLabs TTS Voice Mapping</li>
+        <li>Frame-by-Frame Video Animation</li>
+        <li>Groq AI Script Generation</li>
+        <li>Content Deduplication Brain</li>
+        <li>YouTube Data API Upload</li>
+        <li>Telegram Human-in-the-Loop Gate</li>
+        <li>TF-IDF News Clustering</li>
+      </ul>
+    </div>
+    <div class="part-card">
+      <h4>Part VIII — Security &amp; Identity</h4>
+      <ul>
+        <li>Fernet Field-Level Encryption</li>
+        <li>HMAC + SHA256 Verification</li>
+        <li>Google OAuth2 Flow</li>
+        <li>FastAPI Lifespan Pattern</li>
+      </ul>
+    </div>
+    <div class="part-card">
+      <h4>Part IX — Database &amp; Persistence</h4>
+      <ul>
+        <li>Prisma Transaction-Safe Pipeline</li>
+        <li>Async SQLite with aiosqlite</li>
+        <li>Alembic DB Migrations</li>
+        <li>Prisma Multi-Service ORM</li>
+      </ul>
+    </div>
+    <div class="part-card">
+      <h4>Part X — Knowledge Extraction &amp; RAG</h4>
+      <ul>
+        <li>YouTube → AI Knowledge Pipeline</li>
+        <li>Multi-Provider RAG (Gemini + Ollama)</li>
+        <li>Article Scraper → Store Pipeline</li>
+      </ul>
+    </div>
+    <div class="part-card">
+      <h4>Part XI — Testing, Deployment &amp; DevOps</h4>
+      <ul>
+        <li>Vitest Unit + Integration Tests</li>
+        <li>Docker Compose Containerization</li>
+        <li>Supabase IP Rate Limiting</li>
+        <li>Stripe Webhook + Checkout</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>Free for educational use · <a href="50-ai-implementations.pdf" download>Download PDF</a> · Built by <a href="https://github.com/rohith547" target="_blank">Rohith Shabad</a></p>
+</footer>
+
+<!-- PDF.js CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script>
+  pdfjsLib.GlobalWorkerOptions.workerSrc =
+    'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+  let pdfDoc = null, pageNum = 1, rendering = false;
+  const canvas  = document.getElementById('pdf-canvas');
+  const ctx     = canvas.getContext('2d');
+  const loading = document.getElementById('loading');
+  const info    = document.getElementById('page-info');
+  const prevBtn = document.getElementById('prev-btn');
+  const nextBtn = document.getElementById('next-btn');
+
+  function renderPage(num) {
+    rendering = true;
+    pdfDoc.getPage(num).then(page => {
+      const vp = page.getViewport({ scale: window.innerWidth < 600 ? 1.0 : 1.6 });
+      canvas.height = vp.height;
+      canvas.width  = vp.width;
+      page.render({ canvasContext: ctx, viewport: vp }).promise.then(() => {
+        rendering = false;
+        info.textContent = `Page ${num} of ${pdfDoc.numPages}`;
+        prevBtn.disabled = num <= 1;
+        nextBtn.disabled = num >= pdfDoc.numPages;
+      });
+    });
+  }
+
+  pdfjsLib.getDocument('50-ai-implementations.pdf').promise.then(pdf => {
+    pdfDoc = pdf;
+    loading.style.display = 'none';
+    canvas.style.display  = 'block';
+    prevBtn.disabled = false;
+    nextBtn.disabled = false;
+    renderPage(1);
+  }).catch(() => {
+    loading.innerHTML = '<p style="color:#f78166">Could not load PDF preview. <a href="50-ai-implementations.pdf" style="color:#58a6ff">Download directly</a>.</p>';
+  });
+
+  prevBtn.addEventListener('click', () => {
+    if (pageNum <= 1 || rendering) return;
+    renderPage(--pageNum);
+  });
+
+  nextBtn.addEventListener('click', () => {
+    if (pageNum >= pdfDoc.numPages || rendering) return;
+    renderPage(++pageNum);
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') nextBtn.click();
+    if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   prevBtn.click();
+  });
+</script>
+
+</body>
+</html>
