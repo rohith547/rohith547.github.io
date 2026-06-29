@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Rohith Shabad — AI Engineer & Builder</title>
-  <meta name="description" content="Serial AI Builder. 60+ projects across finance, automation, data, and consumer AI. Sr. Software Engineer @ Lowe's."/>
+  <title>Rohith Yemreddy — AI Engineer, Builder & Course Creator</title>
+  <meta name="description" content="AI Engineer building 50+ open source projects. Free AI course creator. Sr. Software Engineer @ Lowe's. Teaching developers to build with AI."/>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     :root {
@@ -41,6 +41,75 @@
     .btn-secondary { background: var(--card); border: 1px solid var(--border); color: var(--text); }
     .btn:hover { opacity: 0.85; }
 
+    /* HERO VIDEO */
+    .hero-video {
+      max-width: 900px; margin: 32px auto 48px;
+      padding: 0 24px;
+    }
+    .video-container {
+      position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;
+      border-radius: 12px; border: 2px solid var(--border);
+      background: var(--card);
+    }
+    .video-container iframe {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    }
+    .video-title {
+      text-align: center; margin-top: 16px; font-size: 0.95rem;
+      color: var(--muted);
+    }
+    .video-title a {
+      color: var(--accent2); text-decoration: none;
+    }
+    .video-title a:hover { text-decoration: underline; }
+
+    /* BOOKS SECTION */
+    .books-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px; margin: 40px 0;
+    }
+    .book-card {
+      background: var(--card); border: 2px solid var(--border);
+      border-radius: 16px; padding: 28px; text-align: center;
+      transition: all 0.3s; position: relative; overflow: hidden;
+    }
+    .book-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0;
+      height: 4px; background: linear-gradient(90deg, var(--accent), var(--accent2));
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .book-card:hover {
+      border-color: var(--accent); transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(124,58,237,0.3);
+    }
+    .book-card:hover::before { opacity: 1; }
+    .book-icon {
+      font-size: 3.5rem; margin-bottom: 16px;
+    }
+    .book-title {
+      font-size: 1.4rem; font-weight: 700; margin-bottom: 12px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .book-desc {
+      color: var(--muted); font-size: 0.9rem; line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    .book-meta {
+      display: flex; justify-content: center; gap: 16px;
+      margin: 16px 0; font-size: 0.85rem; color: var(--muted);
+    }
+    .btn-book {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 12px 28px; border-radius: 8px; text-decoration: none;
+      font-weight: 700; font-size: 0.95rem; transition: all 0.2s;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: white; margin-top: 8px;
+    }
+    .btn-book:hover {
+      transform: scale(1.05); box-shadow: 0 8px 24px rgba(124,58,237,0.4);
+    }
+
     /* STATS */
     .stats { display: flex; gap: 0; justify-content: center; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); margin: 0 auto; max-width: 700px; }
     .stat { flex: 1; text-align: center; padding: 28px 16px; }
@@ -68,6 +137,22 @@
     .card-link:hover { text-decoration: underline; }
     .live-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); display: inline-block; animation: pulse 2s infinite; }
     @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+    @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+    @keyframes glow { 0%,100%{box-shadow:0 0 20px rgba(124,58,237,0.3)} 50%{box-shadow:0 0 40px rgba(124,58,237,0.6)} }
+
+    /* NEWSLETTER */
+    .newsletter {
+      max-width: 600px; margin: 60px auto; padding: 40px 28px;
+      background: linear-gradient(135deg, rgba(124,58,237,0.15), rgba(6,182,212,0.15));
+      border: 2px solid var(--accent); border-radius: 16px;
+      text-align: center; animation: glow 3s infinite;
+    }
+    .newsletter h3 {
+      font-size: 1.6rem; font-weight: 800; margin-bottom: 12px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .newsletter p { color: var(--muted); margin-bottom: 20px; line-height: 1.6; }
 
     /* FOOTER */
     footer { text-align: center; padding: 48px 24px; color: var(--muted); font-size: 0.875rem; border-top: 1px solid var(--border); }
@@ -84,28 +169,181 @@
 
 <div class="hero">
   <div class="avatar">R</div>
-  <h1>Rohith <span>Shabad</span></h1>
-  <p class="tagline">Serial AI Builder. Sr. Software Engineer @ Lowe's. Building tools that serve real people across finance, automation, data and consumer AI.</p>
+  <h1>Rohith <span>Yemreddy</span></h1>
+  <p class="tagline">AI Engineer & Builder. Teaching AI development. Sr. Software Engineer @ Lowe's. Building 50+ open source tools across AI, automation, and finance.</p>
   <div class="badges">
+    <span class="badge">🎓 Course Creator</span>
     <span class="badge">🐍 Python</span>
     <span class="badge">🤖 LLMs</span>
     <span class="badge">⚡ Node.js</span>
     <span class="badge">📊 Data Engineering</span>
     <span class="badge">🔧 AI Automation</span>
-    <span class="badge">💰 Fintech</span>
   </div>
   <div class="links">
     <a href="https://github.com/rohith547" class="btn btn-primary">GitHub</a>
     <a href="https://www.linkedin.com/in/rohith-s-0b257a186" class="btn btn-secondary">LinkedIn</a>
-    <a href="https://rohith547.github.io/govdata-ai/" class="btn btn-secondary">Featured Project ↗</a>
+    <a href="https://youtube.com/@rohithyemreddy" class="btn btn-secondary">YouTube ↗</a>
+    <a href="https://rohith547.github.io/govdata-ai/" class="btn btn-secondary">govdata-ai ↗</a>
   </div>
 </div>
 
+<!-- HERO VIDEO -->
+<div class="hero-video">
+  <div class="video-container">
+    <iframe src="https://www.youtube.com/embed/ZRHvzGj_n4o?si=5tnWUO9skjTdOjSq" 
+            title="AI Engineering Course" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+    </iframe>
+  </div>
+  <p class="video-title">
+    🎓 <strong>The Complete AI Intermediate Course</strong> — From ChatGPT User to AI Engineer in 45 minutes
+    <br><a href="https://youtube.com/@rohithyemreddy" target="_blank">Watch all episodes on YouTube →</a>
+  </p>
+</div>
+
 <div class="stats">
-  <div class="stat"><div class="stat-num">60+</div><div class="stat-label">Projects Built</div></div>
+  <div class="stat"><div class="stat-num">50+</div><div class="stat-label">Projects Built</div></div>
   <div class="stat"><div class="stat-num">7</div><div class="stat-label">Domains</div></div>
-  <div class="stat"><div class="stat-num">56K+</div><div class="stat-label">Records Searched</div></div>
+  <div class="stat"><div class="stat-num">8</div><div class="stat-label">Course Episodes</div></div>
   <div class="stat"><div class="stat-num">∞</div><div class="stat-label">Still Building</div></div>
+</div>
+
+<div class="section">
+  <div class="section-title">Free Resources</div>
+  <div class="section-heading">📚 Books & Courses</div>
+  
+  <div class="books-grid">
+    <!-- Book 1: 50 AI Implementations -->
+    <div class="book-card">
+      <div class="book-icon">📕</div>
+      <div class="book-title">50 AI Technical Implementations</div>
+      <div class="book-desc">
+        A 161-page reference book documenting 50 production AI patterns from real projects.
+        Streaming APIs, multi-agent systems, Playwright automation, DeFi, RAG pipelines, and more.
+      </div>
+      <div class="book-meta">
+        <span>📄 161 pages</span>
+        <span>💰 Free</span>
+        <span>🔧 Production-ready</span>
+      </div>
+      <a href="50-ai-implementations.pdf" target="_blank" class="btn-book">
+        📥 Download PDF
+      </a>
+      <a href="book.html" style="display:inline-block;margin-top:8px;font-size:0.85rem;color:var(--accent2);text-decoration:none;">View online →</a>
+    </div>
+
+    <!-- Book 2: Complete AI Engineering Book -->
+    <div class="book-card">
+      <div class="book-icon">📗</div>
+      <div class="book-title">Complete AI Engineering Book</div>
+      <div class="book-desc">
+        Everything you need to go from beginner to production AI engineer. LLMs, agents, RAG, MCP,
+        deployment, and the complete tech stack.
+      </div>
+      <div class="book-meta">
+        <span>📄 Full course</span>
+        <span>💰 Free</span>
+        <span>🎓 Beginner-friendly</span>
+      </div>
+      <a href="COMPLETE-AI-ENGINEERING-BOOK.pdf" target="_blank" class="btn-book">
+        📥 Download PDF
+      </a>
+      <a href="https://github.com/rohith547/ai-onboarding-course" style="display:inline-block;margin-top:8px;font-size:0.85rem;color:var(--accent2);text-decoration:none;">View on GitHub →</a>
+    </div>
+
+    <!-- Intermediate Course Brochure -->
+    <div class="book-card">
+      <div class="book-icon">📘</div>
+      <div class="book-title">AI Intermediate Course</div>
+      <div class="book-desc">
+        8 episodes covering prompt engineering, OpenAI API, RAG, agents, MCP, memory, deployment,
+        and multi-agent systems. With code examples and production patterns.
+      </div>
+      <div class="book-meta">
+        <span>🎬 8 episodes</span>
+        <span>💰 Free</span>
+        <span>⏱️ 45 min total</span>
+      </div>
+      <a href="INTERMEDIATE-COURSE-BROCHURE.pdf" target="_blank" class="btn-book">
+        📥 Download PDF
+      </a>
+      <a href="https://youtu.be/ZRHvzGj_n4o?si=5tnWUO9skjTdOjSq" style="display:inline-block;margin-top:8px;font-size:0.85rem;color:var(--accent2);text-decoration:none;">Watch on YouTube →</a>
+    </div>
+  </div>
+</div>
+
+<!-- YOUTUBE COURSE EPISODES -->
+<div class="section" style="background: linear-gradient(180deg, var(--bg) 0%, #13131a 100%);">
+  <div class="section-title">Video Course</div>
+  <div class="section-heading">🎬 AI Engineering Episodes</div>
+  
+  <div class="grid">
+    <div class="card" style="border-color: var(--accent);">
+      <div class="card-name">
+        <span style="color: #ff0000;">▶️</span> Episode 1: Prompt Engineering
+      </div>
+      <div class="card-desc">
+        RCTF framework, Chain-of-Thought, Few-shot prompting. Learn to use ChatGPT like an engineer, not a search bar.
+      </div>
+      <div class="card-tags">
+        <span class="tag">8 min</span>
+        <span class="tag">Beginner</span>
+      </div>
+      <a href="https://youtu.be/ctjWuUUQIuA?si=gkoHBbv4_-ywQSOj" class="card-link" target="_blank">Watch on YouTube ↗</a>
+    </div>
+
+    <div class="card">
+      <div class="card-name">
+        <span style="color: #ff0000;">▶️</span> Full Course (45 min)
+      </div>
+      <div class="card-desc">
+        Complete AI Intermediate Course — 8 episodes covering everything from API basics to multi-agent systems.
+      </div>
+      <div class="card-tags">
+        <span class="tag">45 min</span>
+        <span class="tag">Complete</span>
+      </div>
+      <a href="https://youtu.be/ZRHvzGj_n4o?si=5tnWUO9skjTdOjSq" class="card-link" target="_blank">Watch on YouTube ↗</a>
+    </div>
+
+    <div class="card">
+      <div class="card-name">
+        <span style="color: #ff0000;">▶️</span> More Episodes Coming
+      </div>
+      <div class="card-desc">
+        Episodes 2-8: OpenAI API, RAG pipelines, AI agents, MCP servers, memory, deployment, and multi-agent systems.
+      </div>
+      <div class="card-tags">
+        <span class="tag">Subscribe</span>
+      </div>
+      <a href="https://youtube.com/@rohithyemreddy" class="card-link" target="_blank">Subscribe for updates ↗</a>
+    </div>
+  </div>
+
+  <div style="text-align: center; margin-top: 32px;">
+    <a href="https://youtube.com/@rohithyemreddy" target="_blank" class="btn btn-primary" style="font-size: 1rem; padding: 14px 32px;">
+      📺 View All Episodes on YouTube
+    </a>
+  </div>
+</div>
+
+<!-- NEWSLETTER CTA -->
+<div class="newsletter">
+  <h3>🚀 Want to Build Like This?</h3>
+  <p>
+    Join 1000+ developers learning to build production AI systems. Get weekly tips, code snippets,
+    and early access to new courses.
+  </p>
+  <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+    <a href="https://youtube.com/@rohithyemreddy" target="_blank" class="btn btn-primary">
+      📺 Subscribe on YouTube
+    </a>
+    <a href="https://github.com/rohith547" target="_blank" class="btn btn-secondary">
+      ⭐ Follow on GitHub
+    </a>
+  </div>
 </div>
 
 <div class="section">
@@ -116,10 +354,34 @@
   <div class="domain-label">⭐ Featured</div>
   <div class="grid">
     <div class="card">
+      <div class="card-name"><span class="live-dot"></span> ai-onboarding-course</div>
+      <div class="card-desc">Free AI engineering course — From ChatGPT user to agent builder in ~1 hour. 8 episodes covering LLMs, RAG, agents, MCP, and production deployment.</div>
+      <div class="card-tags"><span class="tag">Course</span><span class="tag">Python</span><span class="tag">AI Education</span><span class="tag">Free</span></div>
+      <a href="https://github.com/rohith547/ai-onboarding-course" class="card-link">View Course ↗</a>
+    </div>
+    <div class="card">
       <div class="card-name"><span class="live-dot"></span> govdata-ai</div>
       <div class="card-desc">Open source AI layer for US government databases. Search 56,864+ unclaimed money records across 5 states using fuzzy name matching.</div>
       <div class="card-tags"><span class="tag">Python</span><span class="tag">Socrata API</span><span class="tag">Gov Data</span><span class="tag">Open Source</span></div>
       <a href="https://rohith547.github.io/govdata-ai/" class="card-link">Live Demo ↗</a>
+    </div>
+    <div class="card">
+      <div class="card-name">linkedinpilot</div>
+      <div class="card-desc">AI-powered LinkedIn automation with Telegram approval workflow. Auto-drafts posts, routes for review, and publishes to LinkedIn daily.</div>
+      <div class="card-tags"><span class="tag">Node.js</span><span class="tag">GPT-4</span><span class="tag">Telegram</span><span class="tag">Automation</span></div>
+      <a href="https://github.com/rohith547/linkedinpilot" class="card-link">GitHub ↗</a>
+    </div>
+    <div class="card">
+      <div class="card-name">ai-stack-picker</div>
+      <div class="card-desc">Interactive tool to choose the perfect AI stack for your project. Answer questions, get LLM, vector DB, and framework recommendations.</div>
+      <div class="card-tags"><span class="tag">React</span><span class="tag">Vite</span><span class="tag">Tailwind</span><span class="tag">Tool</span></div>
+      <a href="https://github.com/rohith547/ai-stack-picker" class="card-link">GitHub ↗</a>
+    </div>
+    <div class="card">
+      <div class="card-name">rent-tracker</div>
+      <div class="card-desc">Telegram bot that auto-tracks rental payments via ICICI bank transaction scraping. Instant alerts when tenants pay rent.</div>
+      <div class="card-tags"><span class="tag">Python</span><span class="tag">Playwright</span><span class="tag">Telegram</span><span class="tag">Fintech</span></div>
+      <a href="https://github.com/rohith547/rent-tracker" class="card-link">GitHub ↗</a>
     </div>
     <div class="card">
       <div class="card-name">personal-agent</div>
@@ -127,7 +389,6 @@
       <div class="card-tags"><span class="tag">LLMs</span><span class="tag">Telegram</span><span class="tag">Automation</span></div>
       <a href="https://github.com/rohith547" class="card-link">GitHub ↗</a>
     </div>
-
   </div>
 
   <!-- FINANCE -->
@@ -202,8 +463,8 @@
 </div>
 
 <footer>
-  <p>Built by Rohith Shabad · <a href="https://github.com/rohith547">github.com/rohith547</a> · <a href="https://www.linkedin.com/in/rohith-s-0b257a186">LinkedIn</a></p>
-  <p style="margin-top:8px;font-size:0.8rem;">Always building. Always shipping.</p>
+  <p>Built by Rohith Yemreddy · <a href="https://github.com/rohith547">GitHub</a> · <a href="https://www.linkedin.com/in/rohith-s-0b257a186">LinkedIn</a> · <a href="https://youtube.com/@rohithyemreddy">YouTube</a> · <a href="mailto:yshravyareddy25@gmail.com">Email</a></p>
+  <p style="margin-top:8px;font-size:0.8rem;">"Stop consuming AI. Start building with it." — Always building. Always shipping.</p>
 </footer>
 
 </body>
